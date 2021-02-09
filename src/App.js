@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Formulario from "./components/Formulario";
+import React, { Fragment, useState } from "react";
 
 function App() {
+  // Definir el estado
+  const [cantidad, setCantidad] = useState(0);
+  const [plazo, setPlazo] = useState("");
+  const [total, setTotal] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Header titulo="Cotizador de Prestamos" />
+      <div className="formulario">
+        <Formulario
+          cantidad={cantidad}
+          setCantidad={setCantidad}
+          plazo={plazo}
+          setPlazo={setPlazo}
+          total={total}
+          setTotal={setTotal}
+        ></Formulario>
+        {total   !==   0   ?   <p>Total a pagar: $ {total}</p>   :   null}
+      </div>
+    </Fragment>
   );
 }
 
