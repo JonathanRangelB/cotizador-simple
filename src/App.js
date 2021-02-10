@@ -1,5 +1,8 @@
 import Header from "./components/Header";
 import Formulario from "./components/Formulario";
+import Mensaje from "./components/Mensaje";
+import Resultado from "./components/Resultado";
+import Spiner from "./components/Spiner";
 import React, { Fragment, useState } from "react";
 
 function App() {
@@ -7,6 +10,16 @@ function App() {
   const [cantidad, setCantidad] = useState(0);
   const [plazo, setPlazo] = useState("");
   const [total, setTotal] = useState(0);
+  const [cargando, setCargando] = useState(false);
+  let componente;
+
+  if (cargando) {
+    componente = <Spiner />;
+  } else if (total === 0) {
+    componente = <Mensaje className="mensajes" />;
+  } else {
+    componente = <Resultado total={total} plazo={plazo} cantidad={cantidad} />;
+  }
 
   return (
     <Fragment>
@@ -19,8 +32,9 @@ function App() {
           setPlazo={setPlazo}
           total={total}
           setTotal={setTotal}
+          setCargando={setCargando}
         ></Formulario>
-        {total   !==   0   ?   <p>Total a pagar: $ {total}</p>   :   null}
+        {componente}
       </div>
     </Fragment>
   );
