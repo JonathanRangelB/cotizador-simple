@@ -72,10 +72,11 @@ const Formulario = (props) => {
             />
           </div>
         </div>
-      </form>
-      {error ? (
+        {error ? (
         <p className="error">Todos los campos son obligatorios</p>
       ) : null}
+      </form>
+
     </>
   );
 };

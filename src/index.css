@@ -27,7 +27,8 @@ h1 {
 
 .formulario{
   background-color: white;
-  border-radius: 10px;
+  margin: 0 30%;
+  border-radius: 15px;
 }
 
 form, .mensajes {
